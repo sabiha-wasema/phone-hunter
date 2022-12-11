@@ -5,7 +5,7 @@ const loadPhone = () => {
   //   console.log(searchText);
   const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   let letters = /^[A-Za-z]+$/;
-  if (searchField.value.match(letters)) {
+  if (searchField.value.match(letters) || searchField.value == "") {
     fetch(url)
       .then(res => res.json())
       .then(data => displayPhone(data.data.slice(0, 20)));
@@ -24,7 +24,6 @@ const displayPhone = phones => {
   phoneContainer.textContent = "";
   for (const phone of phones) {
     // console.log(phone);
-
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
@@ -44,14 +43,14 @@ const displayPhone = phones => {
 };
 
 const showDetails = phoneId => {
-  console.log(phoneId);
+  //   console.log(phoneId);
   const detailShowContainer = document.getElementById("show-details");
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
   fetch(url).then(res => res.json()).then(data => detailContainer(data.data));
 };
 
 const detailContainer = id => {
-  console.log(id);
+  //   console.log(id);
   const showDetailContainer = document.getElementById("show-details");
   showDetailContainer.textContent = "";
   const div = document.createElement("div");
@@ -60,7 +59,7 @@ const detailContainer = id => {
      <img src="${id.image}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><span>Name: </span> ${id.name} </h5>
-          <p class="card-text"><span>Release Date:</span> ${id.releaseDate
+          <p class="card-text1"><span>Release Date:</span> ${id.releaseDate
             ? id.releaseDate
             : "Not Release Date Found"}</p>
         <p class="card-text"><span>Brand Name: </span> ${id.brand}</p>
