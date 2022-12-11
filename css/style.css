@@ -53,3 +53,16 @@
 .card-body {
   padding: 10px 40px;
 }
+.sensors {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sensors li {
+  margin-left: 5px;
+  margin-right: 10px;
+  list-style: none;
+}
+.card-body span {
+  color: black;
+  font-weight: 700;
+}
